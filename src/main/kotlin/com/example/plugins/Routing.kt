@@ -11,7 +11,15 @@ import org.bson.types.ObjectId
 
 fun Application.configureRouting() {
     routing {
+        route("/") {
+            // Không áp dụng middleware kiểm tra role vào route /
+            get {
+                call.respondText("Hello world!")
+            }
+        }
         route("/students") {
+            // Áp dụng middleware kiểm tra role vào route /students
+            install(RoleCheckPlugin)
 
             // Lấy danh sách sinh viên
             get {
@@ -33,7 +41,6 @@ fun Application.configureRouting() {
             // Thêm sinh viên mới
             post {
                 val student = call.receive<Student>()
-                // Nếu sinh viên không có id, tạo một id mới
                 val studentWithId = student.copy(id = student.id ?: ObjectId())
                 StudentDao.addStudent(studentWithId)
                 call.respond(

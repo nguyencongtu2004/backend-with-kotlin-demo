@@ -13,6 +13,7 @@ import kotlinx.serialization.json.Json
 import kotlinx.serialization.modules.serializersModuleOf
 import org.bson.types.ObjectId
 
+// configureSerialization là một hàm mở rộng của Application
 fun Application.configureSerialization() {
     install(ContentNegotiation) {
         json(Json {

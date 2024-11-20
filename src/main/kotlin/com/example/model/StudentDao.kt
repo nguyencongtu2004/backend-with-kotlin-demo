@@ -7,7 +7,8 @@ import com.mongodb.client.model.Filters.eq
 
 // Data Access Object (DAO) cho sinh viên
 object StudentDao {
-    private val client = MongoClients.create("mongodb://localhost:27017")
+    // private val client = MongoClients.create("mongodb://localhost:27017")
+    private val client = MongoClients.create("mongodb+srv://client:v3dVyZyXYrk1NJGM@ticket-event.5i8ui.mongodb.net/?retryWrites=true&w=majority&appName=ticket-event")
     private val database = client.getDatabase("studentdb")
     private val collection: MongoCollection<Student> = database.getCollection("students", Student::class.java)
 

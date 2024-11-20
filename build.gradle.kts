@@ -39,5 +39,7 @@ dependencies {
     // Chuyển đổi BSON
     implementation("org.mongodb:bson-kotlinx:5.2.0")
 
+    // Ktor CORS
+    implementation("io.ktor:ktor-server-cors:2.3.4")
 }
 
